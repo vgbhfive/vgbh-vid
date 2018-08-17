@@ -14,6 +14,7 @@ public class TimeUtils {
 
     public static final long EPOCH = 1420041600000L;
 
+    //根据IdType判断并获取当前系统时间
     public static long genTime(final IdType idType) {
         if (idType == IdType.MAX_PEAK) {
             return (System.currentTimeMillis() - TimeUtils.EPOCH) / 1000;
@@ -23,7 +24,7 @@ public class TimeUtils {
         return (System.currentTimeMillis() - TimeUtils.EPOCH) / 1000;
     }
 
-
+    //判断时间是否准确
     public static void validateTimestamp(long lastTimeStamp, long timestamp) {
         if (timestamp < lastTimeStamp) {
             if (log.isErrorEnabled())
@@ -39,7 +40,7 @@ public class TimeUtils {
 
     }
 
-    public static long tillNextTimeUtil(long lastTimeStamp, IdType idType) {
+    public static long tillNextTimeUnit(long lastTimeStamp, IdType idType) {
         long timeStamp = 0;
 
         if (log.isInfoEnabled()) {

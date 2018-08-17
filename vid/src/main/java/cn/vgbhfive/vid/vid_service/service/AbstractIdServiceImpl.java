@@ -11,6 +11,7 @@ import cn.vgbhfive.vid.vid_service.provider.MachineIdProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -39,6 +40,7 @@ public abstract class AbstractIdServiceImpl implements IdService {
     private IdConverter idConverter;
 
     @Autowired
+    @Qualifier("property")
     private MachineIdProvider machineIdProvider;
 
     public AbstractIdServiceImpl(IdType type) {
@@ -55,6 +57,7 @@ public abstract class AbstractIdServiceImpl implements IdService {
 
     public void init() {
         this.machineId = machineIdProvider.getMachineId();
+        System.out.println("+++++++++++++++++++++++++++" + this.machineId + "++++++++++++++++++++++");
 
         if (machineId < 0) {
             log.error("The machine ID is not configured properly so that Vesta Service refuses to start.");
@@ -78,7 +81,7 @@ public abstract class AbstractIdServiceImpl implements IdService {
         setIdConverter(new IdConverterImpl(this.idMeta));
     }
 
-    //模板回调函数
+    //模板回调函数，调用IdPopulator
     protected abstract void populateId(Id id) ;
 
     @Override
@@ -96,9 +99,10 @@ public abstract class AbstractIdServiceImpl implements IdService {
         long ret = idConverter.convert(id);
 
         if (log.isTraceEnabled()) {
-            log.trace(String.format("ID：%s => %d"), id, ret);
+            log.trace(String.format("-----------ID：%s => %d----------"), id, ret);
         }
 
+        //System.out.println(ret);
         return ret;
     }
 

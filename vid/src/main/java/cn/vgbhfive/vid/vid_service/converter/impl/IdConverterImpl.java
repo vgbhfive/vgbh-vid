@@ -38,11 +38,9 @@ public class IdConverterImpl implements IdConverter {
     public long doConvert(Id id, IdMeta idMeta) {
         long ret = 0;
 
-        System.out.println("   " + id.getMachine() + "     " + id.getSeq() + "    " + id.getTime() + "    "
-                + id.getGenMethod()+ "     " + id.getType() + "    " + id.getVersion());
+        //System.out.println("   " + id.getMachine() + "     " + id.getSeq() + "    " + id.getTime() + "    "+ id.getGenMethod()+ "     " + id.getType() + "    " + id.getVersion());
 
-        System.out.println(idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +
-                idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" + idMeta.getVersionBitsStartPos());
+        //System.out.println(idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" + idMeta.getVersionBitsStartPos());
 
         ret |= id.getMachine();
         ret |= id.getSeq() << idMeta.getSeqBitsStartPos();

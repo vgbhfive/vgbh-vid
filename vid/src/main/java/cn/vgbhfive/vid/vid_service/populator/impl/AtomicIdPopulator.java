@@ -47,7 +47,7 @@ public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
                 sequence++;
                 sequence &= idMeta.getSeqBitsMask();
                 if (sequence == 0) {
-                    timestamp = TimeUtils.tillNextTimeUtil(varOld.lastTimeStamp, IdType.parse(id.getType()));
+                    timestamp = TimeUtils.tillNextTimeUnit(varOld.lastTimeStamp, IdType.parse(id.getType()));
                 }
             } else {
                 sequence = 0;
