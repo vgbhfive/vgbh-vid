@@ -4,7 +4,6 @@ package cn.vgbhfive.vid.vid_intf.bean;
  * @time:
  * @author: Vgbh
  */
-
 public class Id {
 
     //机器ID，占位10位

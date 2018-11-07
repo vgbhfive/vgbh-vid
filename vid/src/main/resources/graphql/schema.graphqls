@@ -1,9 +1,0 @@
-schema {
-    query：Query
-    mutation: Mutation
-}
-
-query {
-    getId(): Long
-    hello(): String
-}

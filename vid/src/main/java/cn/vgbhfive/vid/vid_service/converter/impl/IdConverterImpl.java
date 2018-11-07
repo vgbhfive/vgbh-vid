@@ -5,6 +5,8 @@ import cn.vgbhfive.vid.vid_service.converter.IdConverter;
 import cn.vgbhfive.vid.vid_service.entity.IdMeta;
 import cn.vgbhfive.vid.vid_service.entity.IdMetaFactory;
 import cn.vgbhfive.vid.vid_service.entity.IdType;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class IdConverterImpl implements IdConverter {
+
+    private static final Logger logger = LoggerFactory.getLogger(IdConverterImpl.class);
 
     private IdMeta idMeta;
 
@@ -37,10 +41,13 @@ public class IdConverterImpl implements IdConverter {
     @Override
     public long doConvert(Id id, IdMeta idMeta) {
         long ret = 0;
-
-        //System.out.println("   " + id.getMachine() + "     " + id.getSeq() + "    " + id.getTime() + "    "+ id.getGenMethod()+ "     " + id.getType() + "    " + id.getVersion());
-
-        //System.out.println(idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" + idMeta.getVersionBitsStartPos());
+        //查看Id的信息
+        logger.info("\n   " + id.getMachine() + "     " + id.getSeq() + "    " + id.getTime() + "    " +
+                id.getGenMethod()+ "     " + id.getType() + "    " + id.getVersion() + "\n");
+        //查看IdMeta的各项信息
+        logger.info("\n" + idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +
+                idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" +
+                idMeta.getVersionBitsStartPos() + "\n");
 
         ret |= id.getMachine();
         ret |= id.getSeq() << idMeta.getSeqBitsStartPos();
@@ -48,6 +55,8 @@ public class IdConverterImpl implements IdConverter {
         ret |= id.getGenMethod() << idMeta.getGenMethodBitsStartPos();
         ret |= id.getType() << idMeta.getTypeBitsStartPos();
         ret |= id.getVersion() << idMeta.getVersionBitsStartPos();
+
+        logger.info("\n ID ---> Long  return:" + ret + "\n");
 
         return ret;
     }
@@ -61,12 +70,19 @@ public class IdConverterImpl implements IdConverter {
     public Id doConvert(long id, IdMeta idMeta) {
         Id ret = new Id();
 
+        //查看IdMeta的各项信息
+        logger.info("\n" + idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +
+                idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" +
+                idMeta.getVersionBitsStartPos() + "\n");
+
         ret.setMachine(id & idMeta.getMachineBitsMask());
         ret.setSeq((id >>> idMeta.getSeqBitsStartPos()) & idMeta.getSeqBitsMask());
         ret.setTime((id >>> idMeta.getTimeBitsStartPos()) & idMeta.getTimeBitsMask()) ;
         ret.setGenMethod((id >>> idMeta.getGenMethodBitsStartPos()) & idMeta.getGenMethodBitsMask());
         ret.setType((id >>> idMeta.getTypeBitsStartPos()) & idMeta.getTypeBitsMask());
         ret.setVersion((id >>> idMeta.getVersionBitsStartPos()) & idMeta.getVersionBitsMask());
+
+        logger.info("\n Long ---> ID  return:" + ret.toString() + "\n");
 
         return ret;
     }

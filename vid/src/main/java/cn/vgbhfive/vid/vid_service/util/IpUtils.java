@@ -7,7 +7,6 @@ package cn.vgbhfive.vid.vid_service.util;
 public class IpUtils {
 
     public static String getHostIp () {
-
         return null;
     }
 

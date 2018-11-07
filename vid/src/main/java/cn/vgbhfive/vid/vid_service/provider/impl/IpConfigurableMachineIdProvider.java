@@ -24,10 +24,12 @@ public class IpConfigurableMachineIdProvider implements MachineIdProvider {
 
     private long machineId;
 
+    //根据IP地址获取机器ID
+
     private Map<String, Long> ipsMap = new HashMap<String, Long>();
 
     public IpConfigurableMachineIdProvider () {
-        log.debug("-----------IpConfigurableMachineIdProvider constructed!------------");
+        log.info("\n IpConfigurableMachineIdProvider constructed! \n");
     }
 
     public IpConfigurableMachineIdProvider (String ips) {
@@ -36,7 +38,7 @@ public class IpConfigurableMachineIdProvider implements MachineIdProvider {
     }
 
     private void setIps(String ips) {
-        log.debug("-----------IpConfigurableMachineIdProvider ips {}-------------", ips);
+        log.info("\n IpConfigurableMachineIdProvider ips {} \n", ips);
 
         if (!StringUtils.isEmpty(ips)) {
             String[] ipArray = ips.split(" ");
@@ -64,8 +66,7 @@ public class IpConfigurableMachineIdProvider implements MachineIdProvider {
 
         machineId = ipsMap.get(ip);
 
-        log.info("------------IpConfigurableMachineIdProvider.init ip {} id {}-----------", ip,
-                machineId);
+        log.info("\n IpConfigurableMachineIdProvider.init ip {} id {} \n", ip, machineId);
     }
 
     @Override

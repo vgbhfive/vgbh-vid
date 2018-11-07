@@ -6,6 +6,8 @@ import cn.vgbhfive.vid.vid_service.entity.IdType;
 import cn.vgbhfive.vid.vid_service.populator.IdPopulator;
 import cn.vgbhfive.vid.vid_service.populator.ResetPopulator;
 import cn.vgbhfive.vid.vid_service.util.TimeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -18,6 +20,8 @@ import java.util.concurrent.atomic.AtomicReference;
 @Component
 @Qualifier("atomic")
 public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
+
+    private static final Logger logger = LoggerFactory.getLogger(AtomicIdPopulator.class);
 
     class Variant {
         private long sequence = 0;
@@ -66,7 +70,7 @@ public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
 
         }
 
-
+        logger.info("\nAtomicIdPopulator 确立时间戳、序列号 --- 时间戳：" + id.getTime() + "序列号：" + id.getSeq());
     }
 
     @Override

@@ -22,10 +22,11 @@ public class DbMachineIdProvider implements MachineIdProvider {
 
     private long machineId;
 
+    //预留JDBC模板，在大规模存取情况下择优选择
     //private JdbcTemplate jdbcTemplate;
 
     public DbMachineIdProvider () {
-        log.debug("DbMachineIdProvider constructed!");
+        log.info("\n DbMachineIdProvider constructed! \n");
     }
 
     //方法主体

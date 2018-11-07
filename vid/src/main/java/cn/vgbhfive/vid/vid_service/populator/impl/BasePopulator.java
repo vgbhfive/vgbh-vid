@@ -6,12 +6,16 @@ import cn.vgbhfive.vid.vid_service.entity.IdType;
 import cn.vgbhfive.vid.vid_service.populator.IdPopulator;
 import cn.vgbhfive.vid.vid_service.populator.ResetPopulator;
 import cn.vgbhfive.vid.vid_service.util.TimeUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @time:
  * @author: Vgbh
  */
 public abstract class BasePopulator implements IdPopulator, ResetPopulator {
+
+    private static final Logger logger = LoggerFactory.getLogger(BasePopulator.class);
 
     protected long sequence = 0;
     protected long lastTimeStamp = -1;
@@ -38,6 +42,7 @@ public abstract class BasePopulator implements IdPopulator, ResetPopulator {
 
         id.setSeq(sequence);
         id.setTime(timeStamp);
+        logger.info("\n BasePopulator 父类生成时间戳和序列号 \n");
     }
 
     @Override
