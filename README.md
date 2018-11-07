@@ -11,3 +11,9 @@ Distribute sender
 1、添加了GraphQL的测试用例，为下一步的GraphQL开发做基础。
 2、添加GraphQL包，确保在可运行的前提下添加无误。
 3、更新API接口，满足多种条件下的请求和访问。
+
+### RPC
+1、添加了RPC的服务接口，独立启动VidApplication没有任何错误。
+2、在启用RPC服务时，请先启动本机的Zookeeper服务。
+3、RPC的Test测试还有Error，正在修理当中。
+4、
