@@ -42,7 +42,7 @@ public abstract class BasePopulator implements IdPopulator, ResetPopulator {
 
         id.setSeq(sequence);
         id.setTime(timeStamp);
-        logger.info("\n BasePopulator 父类生成时间戳和序列号 \n");
+        //logger.info(" BasePopulator 父类生成时间戳和序列号 ");
     }
 
     @Override

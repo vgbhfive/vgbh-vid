@@ -20,7 +20,7 @@ public class PropertyMachineIdProvider implements MachineIdProvider {
 
     //从配置文件中获取机器ID
     public PropertyMachineIdProvider() {
-        logger.info("\n PropertyMachineIdProvider construct! \n");
+        //logger.info(" PropertyMachineIdProvider construct! ");
     }
 
     @Override

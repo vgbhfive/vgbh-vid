@@ -35,7 +35,7 @@ public class LockIdPopulator extends BasePopulator {
             lock.unlock();
         }
 
-        logger.info("\nLockIdPopulator 由父类生成时间戳和序列号 \n");
+        //logger.info("LockIdPopulator 由父类生成时间戳和序列号 ");
     }
 
 }

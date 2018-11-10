@@ -57,7 +57,7 @@ public abstract class AbstractIdServiceImpl implements IdService {
 
     public void init() {
         this.machineId = machineIdProvider.getMachineId();
-        System.out.println("+++++++++++++++++++++++++++" + this.machineId + "++++++++++++++++++++++");
+        //log.info("+++++++++++++++++++++++++++" + this.machineId + "++++++++++++++++++++++");
 
         if (machineId < 0) {
             log.error("The machine ID is not configured properly so that Vesta Service refuses to start.");

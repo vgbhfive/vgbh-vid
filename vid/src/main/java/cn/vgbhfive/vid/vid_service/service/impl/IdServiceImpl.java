@@ -44,15 +44,15 @@ public class IdServiceImpl extends AbstractIdServiceImpl {
 
     private void initPopulator() {
         if(idPopulator != null){
-            log.info("----------The " + idPopulator.getClass().getCanonicalName() + " is used.-----------");
+            //log.info("----------The " + idPopulator.getClass().getCanonicalName() + " is used.-----------");
         } else if (CommonUtils.isPropKeyOn(SYNC_LOCK_IMPL_KEY)) {
-            log.info("----------The SyncIdPopulator is used.--------------");
+            //log.info("----------The SyncIdPopulator is used.--------------");
             idPopulator = new SyncIdPopulator();
         } else if (CommonUtils.isPropKeyOn(ATOMIC_IMPL_KEY)) {
-            log.info("----------The AtomicIdPopulator is used.---------------");
+            //log.info("----------The AtomicIdPopulator is used.---------------");
             idPopulator = new AtomicIdPopulator();
         } else {
-            log.info("----------The default LockIdPopulator is used.----------------");
+            //log.info("----------The default LockIdPopulator is used.----------------");
             idPopulator = new LockIdPopulator();
         }
     }

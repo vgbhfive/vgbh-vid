@@ -69,8 +69,7 @@ public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
             }
 
         }
-
-        logger.info("\nAtomicIdPopulator 确立时间戳、序列号 --- 时间戳：" + id.getTime() + "序列号：" + id.getSeq());
+        //logger.info("\nAtomicIdPopulator 确立时间戳、序列号 --- 时间戳：" + id.getTime() + "序列号：" + id.getSeq());
     }
 
     @Override

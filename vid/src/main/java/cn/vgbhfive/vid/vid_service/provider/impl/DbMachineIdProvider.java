@@ -26,7 +26,7 @@ public class DbMachineIdProvider implements MachineIdProvider {
     //private JdbcTemplate jdbcTemplate;
 
     public DbMachineIdProvider () {
-        log.info("\n DbMachineIdProvider constructed! \n");
+        //log.info(" DbMachineIdProvider constructed! ");
     }
 
     //方法主体

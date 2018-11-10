@@ -24,6 +24,6 @@ public class SyncIdPopulator extends BasePopulator {
 
     public synchronized void populateId(Id id, IdMeta idMeta) {
         super.populateId(id, idMeta);
-        logger.info("\nSyncIdPopulator 由父类生成时间戳和序列号 \n");
+        //logger.info("SyncIdPopulator 由父类生成时间戳和序列号 ");
     }
 }

@@ -38,7 +38,7 @@ public class IpConfigurableMachineIdProvider implements MachineIdProvider {
     }
 
     private void setIps(String ips) {
-        log.info("\n IpConfigurableMachineIdProvider ips {} \n", ips);
+        //log.info(" IpConfigurableMachineIdProvider ips {} ", ips);
 
         if (!StringUtils.isEmpty(ips)) {
             String[] ipArray = ips.split(" ");
@@ -66,7 +66,7 @@ public class IpConfigurableMachineIdProvider implements MachineIdProvider {
 
         machineId = ipsMap.get(ip);
 
-        log.info("\n IpConfigurableMachineIdProvider.init ip {} id {} \n", ip, machineId);
+        //log.info(" IpConfigurableMachineIdProvider.init ip {} id {} ", ip, machineId);
     }
 
     @Override

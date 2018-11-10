@@ -27,13 +27,13 @@ public class VIDController {
     @RequestMapping(value = "/id", method = RequestMethod.GET)
     public long getId() {
         Long id = idService.genId();
-        logger.info("Client request for a ID,successful！！！ --- ID：" + id);
+        //logger.info("Client request for a ID,successful！！！ --- ID：" + id);
         return id;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String hello() {
-        logger.info("Client test successful！ --- Hello World.");
+        //logger.info("Client test successful！ --- Hello World.");
         return "Hello World";
     }
 
