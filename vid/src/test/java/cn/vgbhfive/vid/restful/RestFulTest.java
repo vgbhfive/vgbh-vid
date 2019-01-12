@@ -3,23 +3,25 @@ package cn.vgbhfive.vid.restful;
 import cn.vgbhfive.vid.vid_rest.VIDController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.Iterator;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
- * @time:
+ * @time: 2019/1/12
  * @author: Vgbh
  */
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class RestFulTest implements Runnable{
+public class RestFulTest {
 
-    private ConcurrentHashMap<Long, Integer> map = new ConcurrentHashMap<Long, Integer>();
+    private static final Logger log = LoggerFactory.getLogger(RestFulTest.class);
 
     @Autowired
     private VIDController vidController;
@@ -36,54 +38,39 @@ public class RestFulTest implements Runnable{
     //多线程测试
     @Test
     public void VidThreadTest () {
-        for (int i = 0; i < 50; ++i) {
-            new Thread(new RestFulTest()).start();
-        }
-        System.out.print("\n\n\n\nsssss\n\n\n\n");
-        long ll = 11;
-        map.put(ll, 12);
-        for(Map.Entry<Long, Integer> entry: map.entrySet()) {
-            System.out.println("Key = " + entry.getKey() + ", Value = " + entry.getValue());
-        }
-    }
+        //执行调用
+        Runnable runable = new Runnable() {
+            @Override
+            public void run() {
+                //log.info("" + vidController.getId());
+                System.out.println(vidController.getId() + "    " + System.currentTimeMillis());
+            }
+        };
 
-    @Override
-    public void run() {
-        try {
-            long id1 = vidController.getId();
-            System.out.println(id1);
-            map.put(id1, 1 + map.get(id1));
-            Thread.sleep(100);
+        //线程池
+        ThreadPoolExecutor executor = new ThreadPoolExecutor(
+                8, 10, 5, TimeUnit.SECONDS, new LinkedBlockingDeque<Runnable>());
 
-            long id2 = vidController.getId();
-            System.out.println(id2);
-            map.put(id2, 1 + map.get(id2));
-            Thread.sleep(100);
-
-            long id3 = vidController.getId();
-            System.out.println(id3);
-            map.put(id3, 1 + map.get(id3));
-            Thread.sleep(100);
-
-            long id4 = vidController.getId();
-            System.out.println(id4);
-            map.put(id4, 1 + map.get(id4));
-            Thread.sleep(100);
-
-            long id5 = vidController.getId();
-            System.out.println(id5);
-            map.put(id5, 1 + map.get(id5));
-            //Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        //执行
+        for (int i = 0; i < 100; i++) {
+            executor.execute(runable);
         }
 
         /*
-        在经过多线程的测试中，发现了以下问题：
+        未使用线程池前，在经过多线程的测试中，发现了以下问题：
         1、多线程的请求中vidController会出现空指针的问题。
         2、多线程请求的过程中，线程请求还未结束，项目便已经停止了运行。
         3、多线程多任务的情况下们会出现大面积的请求错误现象。
         4、多线程多任务的请求下，map无法记录产生的ID，无法记录是否产生错误的ID。
          */
+
+        /*
+        使用线程池，经过测试：
+        1、请求100次，响应时间为16毫秒。
+        2、没有出现空指针问题了。
+        3、没有请求错误的出现。
+         */
     }
+
+
 }
