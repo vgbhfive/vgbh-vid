@@ -11,6 +11,7 @@ Distribute sender
 3、优化架构，满足多种需求，比如Netty等。
 4、添加解析Vid接口，使用ID可以得到详细的ID信息。
 	4.1、接口已添加，方法未实现。
+5、GraphQL API接口添加完成，还未测试，并且暂时不能运行，还在进一步的修改中。
 
 ### GraphQL
 1、添加了GraphQL的测试用例，为下一步的GraphQL开发做基础。
