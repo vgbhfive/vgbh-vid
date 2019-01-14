@@ -15,10 +15,8 @@ public class GrapgqlTest {
 
     @Test
     public void graphqlTest () {
-        String schema = "type Query {hello: String}";
 
     }
-
 
 
 }

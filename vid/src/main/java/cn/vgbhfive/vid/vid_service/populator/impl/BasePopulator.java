@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class BasePopulator implements IdPopulator, ResetPopulator {
 
-    private static final Logger logger = LoggerFactory.getLogger(BasePopulator.class);
+    private static final Logger log = LoggerFactory.getLogger(BasePopulator.class);
 
     protected long sequence = 0;
     protected long lastTimeStamp = -1;
@@ -42,7 +42,7 @@ public abstract class BasePopulator implements IdPopulator, ResetPopulator {
 
         id.setSeq(sequence);
         id.setTime(timeStamp);
-        //logger.info(" BasePopulator 父类生成时间戳和序列号 ");
+        //log.info(" BasePopulator 父类生成时间戳和序列号 ");
     }
 
     @Override

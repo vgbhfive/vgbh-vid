@@ -21,7 +21,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Qualifier("atomic")
 public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
 
-    private static final Logger logger = LoggerFactory.getLogger(AtomicIdPopulator.class);
+    private static final Logger log = LoggerFactory.getLogger(AtomicIdPopulator.class);
 
     class Variant {
         private long sequence = 0;
@@ -69,7 +69,7 @@ public class AtomicIdPopulator implements IdPopulator, ResetPopulator {
             }
 
         }
-        //logger.info("\nAtomicIdPopulator 确立时间戳、序列号 --- 时间戳：" + id.getTime() + "序列号：" + id.getSeq());
+        //log.info("\nAtomicIdPopulator 确立时间戳、序列号 --- 时间戳：" + id.getTime() + "序列号：" + id.getSeq());
     }
 
     @Override

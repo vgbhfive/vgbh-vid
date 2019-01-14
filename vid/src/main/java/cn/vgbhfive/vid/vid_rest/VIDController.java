@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @ComponentScan("cn.vgbhfive.vid")
 public class VIDController {
 
-    private static final Logger logger = LoggerFactory.getLogger(VIDController.class);
+    private static final Logger log = LoggerFactory.getLogger(VIDController.class);
 
     @Autowired
     private IdService idService;
@@ -27,13 +27,13 @@ public class VIDController {
     @RequestMapping(value = "/id", method = RequestMethod.GET)
     public long getId() {
         Long id = idService.genId();
-        //logger.info("Client request for a ID,successful！！！ --- ID：" + id);
+        //log.info("Client request for a ID,successful！！！ --- ID：" + id);
         return id;
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String hello() {
-        //logger.info("Client test successful！ --- Hello World.");
+        //log.info("Client test successful！ --- Hello World.");
         return "Hello World";
     }
 

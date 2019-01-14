@@ -1,8 +1,5 @@
 package cn.vgbhfive.vid.vid_service.entity;
 
-
-import org.springframework.context.annotation.Bean;
-
 /**
  * @time:
  * @author: Vgbh
