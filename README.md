@@ -12,6 +12,7 @@ Distribute sender
 4、添加解析Vid接口，使用ID可以得到详细的ID信息。
 	4.1、接口已添加，方法未实现。
 5、GraphQL API接口添加完成，还未测试，并且暂时不能运行，还在进一步的修改中。
+	5.1、目前Error已被改正，可以正常运行。
 
 ### GraphQL
 1、添加了GraphQL的测试用例，为下一步的GraphQL开发做基础。
