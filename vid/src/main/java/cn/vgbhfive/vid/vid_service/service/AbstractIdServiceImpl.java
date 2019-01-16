@@ -17,10 +17,10 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
+ * 主逻辑被封装在抽象父类中AbstractIdServiceImpl中
+ *
  * @time:
  * @author: Vgbh
- *
- * 主逻辑被封装在抽象父类中AbstractIdServiceImpl中，
  */
 @Component
 public abstract class AbstractIdServiceImpl implements IdService {
@@ -61,10 +61,8 @@ public abstract class AbstractIdServiceImpl implements IdService {
 
         if (machineId < 0) {
             log.error("The machine ID is not configured properly so that Vesta Service refuses to start.");
-
             throw new IllegalStateException(
                     "The machine ID is not configured properly so that Vesta Service refuses to start.");
-
         }
         if(this.idMeta == null){
             setIdMeta(IdMetaFactory.getIdMeta(idType));
@@ -88,7 +86,6 @@ public abstract class AbstractIdServiceImpl implements IdService {
     public long genId() {
         init();
         Id id = new Id();
-
         id.setGenMethod(genMethod);
         id.setMachine(machineId);
         id.setType(type);
@@ -101,14 +98,13 @@ public abstract class AbstractIdServiceImpl implements IdService {
         if (log.isTraceEnabled()) {
             log.trace(String.format("-----------ID：%s => %d----------"), id, ret);
         }
-
         //System.out.println(ret);
         return ret;
     }
 
     @Override
     public Id expId(long id) {
-        return null;
+        return idConverter.convert(id);
     }
 
     @Override
@@ -169,4 +165,5 @@ public abstract class AbstractIdServiceImpl implements IdService {
     public void setMachineIdProvider(MachineIdProvider machineIdProvider) {
         this.machineIdProvider = machineIdProvider;
     }
+
 }

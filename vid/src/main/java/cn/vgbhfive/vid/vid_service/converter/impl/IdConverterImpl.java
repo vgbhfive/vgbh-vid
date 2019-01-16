@@ -64,9 +64,8 @@ public class IdConverterImpl implements IdConverter {
     @Override
     public Id doConvert(long id, IdMeta idMeta) {
         Id ret = new Id();
-
         //查看IdMeta的各项信息
-        //log.info("\n" + idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" +idMeta.getVersionBitsStartPos() + "\n");
+        log.info("\n" + idMeta.getSeqBitsStartPos() + "------" + idMeta.getTimeBitsStartPos() + "-----" +idMeta.getGenMethodBitsStartPos() + "----" + idMeta.getTypeBitsStartPos() + "----" +idMeta.getVersionBitsStartPos() + "\n");
 
         ret.setMachine(id & idMeta.getMachineBitsMask());
         ret.setSeq((id >>> idMeta.getSeqBitsStartPos()) & idMeta.getSeqBitsMask());
@@ -75,8 +74,7 @@ public class IdConverterImpl implements IdConverter {
         ret.setType((id >>> idMeta.getTypeBitsStartPos()) & idMeta.getTypeBitsMask());
         ret.setVersion((id >>> idMeta.getVersionBitsStartPos()) & idMeta.getVersionBitsMask());
 
-        //log.info(" Long ---> ID  return:" + ret.toString());
-
+        log.info(" Long ---> ID  return:" + ret.toString());
         return ret;
     }
 

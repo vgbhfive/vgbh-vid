@@ -33,8 +33,7 @@ public class Id {
     public Id() {
     }
 
-    public Id(long machine, long seq, long time, long genMethod,
-              long type, long version) {
+    public Id(long machine, long seq, long time, long genMethod, long type, long version) {
         this.machine = machine;
         this.seq = seq;
         this.time = time;
@@ -93,7 +92,7 @@ public class Id {
 
     @Override
     public String toString() {
-        return "Id{" +
+        return " Id{" +
                 "machine='" + machine + '\'' +
                 ", seq='" + seq + '\'' +
                 ", time='" + time + '\'' +
