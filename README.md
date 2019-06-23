@@ -89,7 +89,7 @@ Distribute sender
 
 ### 展示
 #### REST 测试
-[localhost:8080/vid/id](localhost:8080/vid/id)
+[localhost:8080/vid/id](localhost:8080/vid/id)</br>
 ![1](/img/1.jpg)
 
 #### RPC 测试
